@@ -7,7 +7,8 @@ const userModel = new mongoose.Schema(
             unique: true
         },
         passwd: String,
-        verifyCode: Number
+        verifyCode: Number,
+        verified: Boolean,
     },
     {
         timestamps: true,
