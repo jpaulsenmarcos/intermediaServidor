@@ -25,4 +25,29 @@ const registerCtrl = async (req, res) => {
     res.send(data)
 }
 
-module.exports = { registerCtrl }
+const loginCtrl = async (req, res) => {
+    try {
+        req = matchedData(req)
+        const user = await usersModel.findOne({ mail: req.mail })
+        if (!user) {
+            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            return
+        }
+        //const hashPassword = await encrypt(user.passwd);
+        const check = await compare(req.passwd, user.passwd)
+        if (!check) {
+            handleHttpError(res, "INVALID_PASSWORD", 401)
+            return
+        }
+        user.set("passwd", undefined, { strict: false })
+        const data = {
+            token: await tokenSign(user),
+            user
+        }
+        res.send(data)
+    } catch (err) {
+        handleHttpError(res, "ERROR_LOGIN_PROCESS")
+    }
+}
+
+module.exports = { registerCtrl, loginCtrl }
