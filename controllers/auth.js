@@ -2,6 +2,7 @@ const usersModel = require('../models/user.js')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError.js')
 const { encrypt, compare } = require("../utils/handlePassword")
+const { tokenSign } = require("../utils/handleJwt.js")
 
 const registerCtrl = async (req, res) => {
     req = matchedData(req)
@@ -10,9 +11,10 @@ const registerCtrl = async (req, res) => {
     const dataUser = await usersModel.create(body)
     dataUser.set('passwd', undefined, { strict: false })
     const data = {
-        /*token: await tokenSign(dataUser),*/
+        token: await tokenSign(dataUser),
         user: dataUser
     }
+    console.log(data.token)
     res.send(data)
 }
 
