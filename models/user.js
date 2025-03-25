@@ -7,8 +7,12 @@ const userModel = new mongoose.Schema(
             unique: true
         },
         passwd: String,
-        verifyCode: Number,
-        verified: Boolean,
+        verifyCode: String,
+        estado: {
+            type: String,
+            enum: ["pendiente", "validado", "rechazado"],
+            default: "pendiente"
+        }
     },
     {
         timestamps: true,
