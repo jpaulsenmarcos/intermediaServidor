@@ -27,6 +27,10 @@ const userModel = new mongoose.Schema(
             postal: Number,
             city: String,
             province: String
+        },
+        logo: {
+            name: String,
+            url: String
         }
     },
     {
