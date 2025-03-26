@@ -7,4 +7,13 @@ const validatorCreateItem = [
     validateResults
 ]
 
-module.exports = { validatorCreateItem }
+const validatorOnBoardingUser = [
+    check("mail").notEmpty(),
+    check("name").notEmpty().withMessage("FALTA NOMBRE"),
+    check("surnames").notEmpty().withMessage("FALTAN APELLIDOS"),
+    check("nif").notEmpty().withMessage("FALTA NIF"),
+    validateResults
+]
+
+
+module.exports = { validatorCreateItem, validatorOnBoardingUser }

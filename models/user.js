@@ -12,7 +12,13 @@ const userModel = new mongoose.Schema(
             type: String,
             enum: ["pendiente", "validado", "rechazado"],
             default: "pendiente"
-        }
+        },
+        name: String,
+        nif: {
+            type: String,
+            unique: true
+        },
+        surnames: String,
     },
     {
         timestamps: true,

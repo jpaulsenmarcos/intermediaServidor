@@ -14,4 +14,26 @@ const createUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser }
+const onBoardingUser = async (req, res) => {
+    try {
+        console.log("OnBOARDING")
+        const body = matchedData(req)
+        const { mail, name, surnames, nif } = body
+        const user = await userModel.findOneAndUpdate(
+            { mail: mail },
+            { name, surnames, nif },
+            { new: true }
+        );
+        if (!user) {
+            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            return
+        }
+        user.set("passwd", undefined, { strict: false })
+
+        res.send({ user })
+    } catch (err) {
+        handleHttpError(res, 'ERROR_ONBOARD_USER')
+    }
+}
+
+module.exports = { createUser, onBoardingUser }
