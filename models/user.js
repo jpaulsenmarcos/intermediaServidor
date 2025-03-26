@@ -19,6 +19,15 @@ const userModel = new mongoose.Schema(
             unique: true
         },
         surnames: String,
+        company: {
+            name: String,
+            cif: String,
+            street: String,
+            number: Number,
+            postal: Number,
+            city: String,
+            province: String
+        }
     },
     {
         timestamps: true,

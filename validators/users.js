@@ -15,5 +15,17 @@ const validatorOnBoardingUser = [
     validateResults
 ]
 
+const validatorOnBoardingCompany = [
+    check("company").isObject(),
+    check("company.name").notEmpty().withMessage("FALTA NOMBRE"),
+    check("company.cif").notEmpty().withMessage("FALTA CIF"),
+    check("company.street").notEmpty().withMessage("FALTA STREET"),
+    check("company.number").notEmpty().withMessage("FALTA NUMBER"),
+    check("company.postal").notEmpty().withMessage("FALTA POSTAL"),
+    check("company.city").notEmpty().withMessage("FALTA CITY"),
+    check("company.province").notEmpty().withMessage("FALTA PROVINCE"),
+    validateResults
+]
 
-module.exports = { validatorCreateItem, validatorOnBoardingUser }
+
+module.exports = { validatorCreateItem, validatorOnBoardingUser, validatorOnBoardingCompany }

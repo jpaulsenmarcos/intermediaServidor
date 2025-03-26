@@ -45,3 +45,25 @@ Content-Type: application/json
     "surnames": "García Pérez",
     "nif": "40000000W"
 }
+
+###
+GET http://localhost:3001/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDI5OTI2ODgsImV4cCI6MTc0Mjk5OTg4OH0.Ki6bHv3AWPvwShXzry11Q0rfsmFr6mrcx7uHjaiTpkU
+
+
+###
+PATCH http://localhost:3001/api/users/company HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDI5OTI2ODgsImV4cCI6MTc0Mjk5OTg4OH0.Ki6bHv3AWPvwShXzry11Q0rfsmFr6mrcx7uHjaiTpkU
+
+{
+    "company": {
+        "name": "Servitop, SL.",
+        "cif": "BXXXXXXXX",
+        "street": "Carlos V",
+        "number": 22,
+        "postal": 28936,
+        "city": "Móstoles",
+        "province": "Madrid"
+    }
+}

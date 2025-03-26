@@ -16,6 +16,7 @@ const tokenSign = (user) => {
 
 const verifyToken = (tokenJwt) => {
     try {
+        console.log("VERIFY: ", jwt.verify(tokenJwt, JWT_SECRET))
         return jwt.verify(tokenJwt, JWT_SECRET)
     } catch (error) {
         console.log(err)

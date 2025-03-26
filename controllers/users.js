@@ -2,6 +2,16 @@ const userModel = require('../models/user.js')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError.js')
 
+const getUsers = async (req, res) => {
+    try {
+        const user = req.user
+        const data = await userModel.find({})
+        res.send({ data, user })
+    } catch (err) {
+        handleHttpError(res, 'ERROR_GET_ITEMS', 403)
+    }
+}
+
 const createUser = async (req, res) => {
     try {
         console.log("Hola")
@@ -36,4 +46,29 @@ const onBoardingUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser, onBoardingUser }
+const onBoardingCompany = async (req, res) => {
+    try {
+        console.log("OnBOARDINGCompany")
+        const body = matchedData(req)
+        const userId = req.user._id
+        const { company } = body
+        const user = await userModel.findOneAndUpdate(
+            userId,
+            { company },
+            { new: true }
+        );
+        if (!user) {
+            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            return
+        }
+        user.set("passwd", undefined, { strict: false })
+
+        res.send({ user })
+    } catch (err) {
+        handleHttpError(res, 'ERROR_ONBOARD_USER')
+    }
+}
+
+
+
+module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers }
