@@ -17,6 +17,24 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3001/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "mail": "ahoraConToken@correo.es",
+    "passwd": "A12345678"
+}
+
+###
+POST http://localhost:3001/api/verify HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U0M2I2MGE3ZTc2YzBiM2I5N2M3NzAiLCJpYXQiOjE3NDMwMTA4NDEsImV4cCI6MTc0MzAxODA0MX0.33gCoiT5Z7sXdZ_EsAjlH7nKQgwYA8Dj3A0t4YJhRwg
+
+{
+    "verifyCode": "969087"
+}
+
+###
 POST http://localhost:3001/api/verify HTTP/1.1
 Content-Type: application/json
 
@@ -30,7 +48,7 @@ POST http://localhost:3001/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "mail": "comparoCode2@correo.es",
+    "mail": "ahoraConToken@correo.es",
     "passwd": "A12345678"
 }
 
