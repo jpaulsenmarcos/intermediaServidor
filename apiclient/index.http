@@ -66,8 +66,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/api/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDI5OTI2ODgsImV4cCI6MTc0Mjk5OTg4OH0.Ki6bHv3AWPvwShXzry11Q0rfsmFr6mrcx7uHjaiTpkU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDMwNzc2OTUsImV4cCI6MTc0MzA4NDg5NX0.oa9sS6q43tY8Me5U3Pi2KdGttyAx3syttJgIe4ILpBI
 
+###
+GET http://localhost:3001/api/users/mine
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDMwNzc5NjMsImV4cCI6MTc0MzA4NTE2M30.vrX2D3ozou8tp6RzyvCS7Aiqx8ZdU8isQxWNosKLXQk
 
 ###
 PATCH http://localhost:3001/api/users/company HTTP/1.1

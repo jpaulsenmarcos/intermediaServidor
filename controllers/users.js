@@ -12,6 +12,16 @@ const getUsers = async (req, res) => {
     }
 }
 
+const getUserMine = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const data = await userModel.findOne(userId)
+        res.send({ data })
+    } catch (err) {
+        handleHttpError(res, 'ERROR_GET_ITEMS', 403)
+    }
+}
+
 const createUser = async (req, res) => {
     try {
         console.log("Hola")
@@ -71,4 +81,4 @@ const onBoardingCompany = async (req, res) => {
 
 
 
-module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers }
+module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers, getUserMine }
