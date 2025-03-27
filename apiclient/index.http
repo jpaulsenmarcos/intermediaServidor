@@ -101,3 +101,7 @@ Content-Type: image/jpeg
 
 < ./logo.png
 --boundary123--
+
+###
+DELETE http://localhost:3001/api/users?soft=false
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDMxMDA1NDMsImV4cCI6MTc0MzEwNzc0M30.RaEUbd0URDJdWlPh01cRh_r2KFB9LTnvNrtbWoC-fGc

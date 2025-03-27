@@ -79,6 +79,34 @@ const onBoardingCompany = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const { soft } = req.query
+        if (soft === undefined) {
+            handleHttpError(res, 'ERROR_SOFT_PARAM_UNDIFINED')
+        }
+        const user = await userModel.findById(userId)
+        if (!user) {
+            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            return
+        }
+        if (soft === "true") {
+            user.deleted = true
+            await user.save()
+            console.log('Usuario borrado SOFT')
+        } else if (soft === "false") {
+            await userModel.findByIdAndDelete(userId)
+            console.log('Usuario borrado HARD')
+        } else {
+            handleHttpError(res, 'INVALID_SOFT_PARAM')
+            return
+        }
+
+    } catch (err) {
+        handleHttpError(res, 'ERROR_DELETE_USER')
+    }
+}
 
 
-module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers, getUserMine }
+module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers, getUserMine, deleteUser }

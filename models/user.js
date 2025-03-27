@@ -31,7 +31,8 @@ const userModel = new mongoose.Schema(
         logo: {
             name: String,
             url: String
-        }
+        },
+        deleted: Boolean
     },
     {
         timestamps: true,
