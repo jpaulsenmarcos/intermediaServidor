@@ -1,6 +1,8 @@
 const userModel = require('../models/user.js')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError.js')
+const { encrypt, compare } = require("../utils/handlePassword")
+const { tokenSign } = require("../utils/handleJwt.js")
 
 const getUsers = async (req, res) => {
     try {
@@ -108,5 +110,34 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const inviteUser = async (req, res) => {
+    try {
+        const body = matchedData(req)
+        const invitante = req.user
+        if (!invitante) {
+            handleHttpError(res, 'NO_HAY_INVITANTE')
+            return
+        }
+        if (!invitante.company) {
+            handleHttpError(res, 'INVITANTE_NO_TIENE_COMPANY')
+            return
+        }
 
-module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers, getUserMine, deleteUser }
+        const password = await encrypt(body.passwd)
+
+        const dataInvitado = {
+            ...body,
+            passwd: password,
+            role: 'guest',
+            company: invitante.company
+        }
+        const invitado = await userModel.create(dataInvitado)
+        invitado.set("passwd", undefined, { strict: false })
+        res.send({ data: invitado })
+    } catch (err) {
+        handleHttpError(res, 'ERROR_INVITE_USER')
+    }
+}
+
+
+module.exports = { createUser, onBoardingUser, onBoardingCompany, getUsers, getUserMine, deleteUser, inviteUser }

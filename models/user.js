@@ -32,7 +32,12 @@ const userModel = new mongoose.Schema(
             name: String,
             url: String
         },
-        deleted: Boolean
+        deleted: Boolean,
+        role: {
+            type: String,
+            enum: ["admin", "guest"],
+            default: "admin"
+        },
     },
     {
         timestamps: true,

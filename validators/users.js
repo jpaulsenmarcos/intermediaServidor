@@ -27,5 +27,14 @@ const validatorOnBoardingCompany = [
     validateResults
 ]
 
+const validatorGuest = [
+    check("mail").notEmpty().withMessage("FALTA MAIL"),
+    check("passwd").notEmpty().withMessage("FALTA CONTRASEÑA"),
+    check("name").notEmpty().withMessage("FALTA NOMBRE"),
+    check("surnames").notEmpty().withMessage("FALTAN APELLIDOS"),
+    check("nif").notEmpty().withMessage("FALTA NIF"),
+    validateResults
+]
 
-module.exports = { validatorCreateItem, validatorOnBoardingUser, validatorOnBoardingCompany }
+
+module.exports = { validatorCreateItem, validatorOnBoardingUser, validatorOnBoardingCompany, validatorGuest }
