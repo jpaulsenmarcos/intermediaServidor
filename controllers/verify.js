@@ -2,6 +2,24 @@ const userModel = require('../models/user.js')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError.js')
 
+async function verifyUserCode(user, code) {
+    if (!user) {
+        throw new Error("USER_NOT_FOUND");
+    }
+
+    if (user.estado !== "validado" && user.verifyCode === code) {
+        user.estado = "validado";
+        user.verifyCode = "000000";
+        await user.save();
+    } else if (user.estado === "validado") {
+        throw new Error("ALREADY_VALIDATED");
+    } else {
+        user.estado = "rechazado";
+        await user.save();
+        throw new Error("ERROR_WRONG_CODE");
+    }
+}
+
 const verificationCtrl = async (req, res) => {
 
     try {
@@ -32,4 +50,4 @@ const verificationCtrl = async (req, res) => {
     }
 }
 
-module.exports = { verificationCtrl }
+module.exports = { verificationCtrl, verifyUserCode }

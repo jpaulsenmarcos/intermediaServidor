@@ -106,7 +106,7 @@ Content-Type: image/jpeg
 DELETE http://localhost:3001/api/users?soft=false
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5YjhjZjViMDRiZTA3YjJhYzkiLCJpYXQiOjE3NDMxMDA1NDMsImV4cCI6MTc0MzEwNzc0M30.RaEUbd0URDJdWlPh01cRh_r2KFB9LTnvNrtbWoC-fGc
 
-//Primero solicito recuperar contraseña, cuando hago esto se envía el codigo de verificación a mi mail,
+//Primero solicito recuperar contraseña, cuando hago esto se envía el codigo de verificación a mi 'mail',
 //cuando compruebo que el code es correcto se borra la contraseña antigua y se introduce la nueva contraseña que tendrá el user
 //solo se puede hacer del user con el token de sesión.
 
@@ -122,4 +122,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U2ZWIzZ
     "name": "Pepe",
     "surnames": "Invitado",
     "nif": "40000000W"
+}
+
+###
+POST http://localhost:3001/api/auth/passPetition
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U2ZWIzZjAzYzllYmIwNDEzNzk5MjUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMyMzk4MjUsImV4cCI6MTc0MzI0NzAyNX0.bAFkllUcq9mcBSAEnMqH3o6PWxK8QIiIkGIvjnpgn-g
+
+###
+POST http://localhost:3001/api/auth/passChange
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U2ZWIzZjAzYzllYmIwNDEzNzk5MjUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMyMzk4MjUsImV4cCI6MTc0MzI0NzAyNX0.bAFkllUcq9mcBSAEnMqH3o6PWxK8QIiIkGIvjnpgn-g
+
+{
+    "verifyCode": "932326",
+    "newPasswd": "A8888888"
 }

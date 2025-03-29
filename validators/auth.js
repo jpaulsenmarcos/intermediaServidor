@@ -17,4 +17,12 @@ const validatorLogin = [
         return validateResults(req, res, next)
     }
 ]
-module.exports = { validatorRegister, validatorLogin }
+
+const validatorNewPasswd = [
+    check("verifyCode").notEmpty(),
+    check("newPasswd").notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+module.exports = { validatorRegister, validatorLogin, validatorNewPasswd }
