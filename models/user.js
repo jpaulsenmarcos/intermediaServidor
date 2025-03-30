@@ -38,6 +38,10 @@ const userModel = new mongoose.Schema(
             enum: ["admin", "guest"],
             default: "admin"
         },
+        autonomo: {
+            type: Boolean,
+            default: false
+        }
     },
     {
         timestamps: true,

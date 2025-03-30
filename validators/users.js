@@ -12,6 +12,7 @@ const validatorOnBoardingUser = [
     check("name").notEmpty().withMessage("FALTA NOMBRE"),
     check("surnames").notEmpty().withMessage("FALTAN APELLIDOS"),
     check("nif").notEmpty().withMessage("FALTA NIF"),
+    check("autonomo").optional().isBoolean(),
     validateResults
 ]
 

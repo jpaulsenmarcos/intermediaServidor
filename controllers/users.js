@@ -40,10 +40,16 @@ const onBoardingUser = async (req, res) => {
     try {
         console.log("OnBOARDING")
         const body = matchedData(req)
-        const { mail, name, surnames, nif } = body
+        const { mail, name, surnames, nif, autonomo } = body
+
+        const updateData = { name, surnames, nif };
+        if (autonomo !== undefined) {
+            updateData.autonomo = autonomo;
+        }
+
         const user = await userModel.findOneAndUpdate(
             { mail: mail },
-            { name, surnames, nif },
+            updateData,
             { new: true }
         );
         if (!user) {
