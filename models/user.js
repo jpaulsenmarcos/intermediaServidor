@@ -8,6 +8,7 @@ const userModel = new mongoose.Schema(
         },
         passwd: String,
         verifyCode: String,
+        numberOfTries: Number,
         estado: {
             type: String,
             enum: ["pendiente", "validado", "rechazado"],

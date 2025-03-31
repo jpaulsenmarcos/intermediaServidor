@@ -14,7 +14,7 @@ const registerCtrl = async (req, res) => {
     req = matchedData(req)
     const passwd = await encrypt(req.passwd)
     const verifyCode = generarCodigo();
-    const body = { ...req, passwd, verifyCode, estado: "pendiente" } // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
+    const body = { ...req, passwd, verifyCode, estado: "pendiente", numberOfTries: 3 } // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
     const dataUser = await usersModel.create(body)
     dataUser.set('passwd', undefined, { strict: false })
     dataUser.set('verifyCode', undefined, { strict: false })

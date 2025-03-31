@@ -30,19 +30,25 @@ const verificationCtrl = async (req, res) => {
         if (!user) {
             return handleHttpError(res, 'ERROR_NO_MAIL_COINCIDENCE')
         }
-        if (user.estado !== "validado" && user.verifyCode === body.verifyCode) {
-            user.estado = "validado"
-            user.verifyCode = "000000"
-            await user.save()
-        } if (user.estado === "validado") {
-            console.log("Está validado")
-        }
-        else {
-            console.log("Introduzco: ", body.verifyCode)
-            console.log("Original: ", user.verifyCode)
-            user.estado = "rechazado"
-            await user.save()
-            return handleHttpError(res, 'ERROR_WRONG_CODE')
+
+        if (user.numberOfTries > 0) {
+            if (user.estado !== "validado" && user.verifyCode === body.verifyCode) {
+                user.estado = "validado"
+                user.verifyCode = "000000"
+                await user.save()
+            } if (user.estado === "validado") {
+                console.log("Está validado")
+            }
+            else {
+                console.log("Introduzco: ", body.verifyCode)
+                console.log("Original: ", user.verifyCode)
+                user.estado = "rechazado"
+                user.numberOfTries = user.numberOfTries - 1
+                await user.save()
+                return handleHttpError(res, 'ERROR_WRONG_CODE')
+            }
+        } else {
+            return handleHttpError(res, 'NO_MORE_TRIES_AVALIABLE')
         }
     } catch (err) {
         console.error("Error en verificationCtrl:", err);
