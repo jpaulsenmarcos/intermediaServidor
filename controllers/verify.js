@@ -38,6 +38,7 @@ const verificationCtrl = async (req, res) => {
                 await user.save()
             } if (user.estado === "validado") {
                 console.log("Está validado")
+                return res.send({ message: "ACK" });
             }
             else {
                 console.log("Introduzco: ", body.verifyCode)

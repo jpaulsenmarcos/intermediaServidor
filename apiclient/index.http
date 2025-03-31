@@ -28,10 +28,10 @@ Content-Type: application/json
 ###
 POST http://localhost:3001/api/verify HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VhODAxNjFiMzM5NDgzMzI1ZGFiZTIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDM0MjE0NjIsImV4cCI6MTc0MzQyODY2Mn0.4c2gw0kIvu6q1So2mbSIqlc8VL4Klr-V1WlPb-1Ox8I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VhN2RhYTI3MjAxMDJmODcxNzYyNTgiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDM0MjIxMjUsImV4cCI6MTc0MzQyOTMyNX0.sitde0XnzKa4JNKJTxspzITHIi3l8TPvT083hpcHTe8
 
 {
-    "verifyCode": "146654"
+    "verifyCode": "000000"
 }
 
 ###
