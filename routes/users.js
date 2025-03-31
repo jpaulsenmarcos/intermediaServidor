@@ -10,7 +10,7 @@ userRouter.get('/', authMiddleware, getUsers);
 userRouter.get('/mine', authMiddleware, getUserMine);
 userRouter.delete('/', authMiddleware, deleteUser);
 userRouter.post('/', validatorCreateItem, createUser);
-userRouter.put('/register', validatorOnBoardingUser, onBoardingUser)
+userRouter.put('/register', authMiddleware, validatorOnBoardingUser, onBoardingUser)
 userRouter.patch('/company', authMiddleware, validatorOnBoardingCompany, onBoardingCompany)
 userRouter.post('/guest', authMiddleware, validatorGuest, inviteUser);
 
