@@ -1,4 +1,6 @@
-const swaggerJsdoc = require("swagger-jsdoc")
+const swaggerJsdoc = require("swagger-jsdoc");
+const { onBoardingCompany, inviteUser } = require("../controllers/users");
+const { verificationCtrl } = require("../controllers/verify");
 const options = {
     definition: {
         openapi: "3.0.3",
@@ -68,6 +70,103 @@ const options = {
                             type: "string"
                         }
                     }
+                },
+                resgiterUser: {
+                    type: "object",
+                    required: ["mail", "name", "surnames", "nif"],
+                    properties: {
+                        mail: {
+                            type: "string",
+                            example: "mimail@gmail.com"
+                        },
+                        name: {
+                            type: "string",
+                            example: "Pepe"
+                        },
+                        surnames: {
+                            type: "string",
+                            example: "Uriol Hernan"
+                        },
+                        nif: {
+                            type: "string",
+                            example: "40000009P"
+                        }
+                    }
+                },
+                onBoardingCompany: {
+                    type: "object",
+                    required: ["company"],
+                    properties: {
+                        company: {
+                            type: "object",
+                            required: ["name", "cif", "street", "number", "postal", "city", "province"],
+                            properties: {
+                                name: {
+                                    type: "string",
+                                    example: "Pepe"
+                                },
+                                cif: {
+                                    type: "string",
+                                    example: "BXXXXXXXX"
+                                },
+                                street: {
+                                    type: "string",
+                                    example: "Carlos V"
+                                },
+                                number: {
+                                    type: "number",
+                                    example: 22
+                                },
+                                postal: {
+                                    type: "number",
+                                    example: 28002
+                                },
+                                city: {
+                                    type: "string",
+                                    example: "Madrid"
+                                },
+                                province: {
+                                    type: "string",
+                                    example: "Madrid"
+                                },
+                            },
+                        },
+                    }
+                },
+                inviteUser: {
+                    type: "object",
+                    required: ["mail", "passwd", "name", "surnames", "nif"],
+                    properties: {
+                        mail: {
+                            type: "string",
+                            example: "mimail@gmail.com"
+                        },
+                        passwd: {
+                            type: "string",
+                        },
+                        name: {
+                            type: "string",
+                            example: "Pepe"
+                        },
+                        surnames: {
+                            type: "string",
+                            example: "Uriol Hernan"
+                        },
+                        nif: {
+                            type: "string",
+                            example: "40000000W"
+                        },
+                    },
+                },
+                verificationCtrl: {
+                    type: "object",
+                    required: ["verifyCode"],
+                    properties: {
+                        verifyCode: {
+                            type: "string",
+                            example: "000000"
+                        }
+                    },
                 },
             },
         },
