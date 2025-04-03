@@ -23,6 +23,12 @@ const options = {
             },
         ],
         components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer"
+                },
+            },
             schemas: {
                 registerAuth: {
                     type: "object",
@@ -35,6 +41,32 @@ const options = {
                         password: {
                             type: "string"
                         },
+                    }
+                },
+                login: {
+                    type: "object",
+                    required: ["mail", "passwd"],
+                    properties: {
+                        mail: {
+                            type: "string",
+                            example: "mimail@gmail.com"
+                        },
+                        password: {
+                            type: "string"
+                        },
+                    }
+                },
+                passChange: {
+                    type: "object",
+                    required: ["verifyCode", "newPasswd"],
+                    properties: {
+                        verifyCode: {
+                            type: "string",
+                            example: "000000"
+                        },
+                        newPasswd: {
+                            type: "string"
+                        }
                     }
                 },
             },
