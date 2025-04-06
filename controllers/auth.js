@@ -4,6 +4,8 @@ const { handleHttpError } = require('../utils/handleError.js')
 const { encrypt, compare } = require("../utils/handlePassword")
 const { tokenSign } = require("../utils/handleJwt.js")
 
+const { sendVerifyCode } = require("../utils/handleEmail.js")
+
 const { verifyUserCode } = require('../controllers/verify.js')
 
 function generarCodigo() {
@@ -16,6 +18,9 @@ const registerCtrl = async (req, res) => {
     const verifyCode = generarCodigo();
     const body = { ...req, passwd, verifyCode, estado: "pendiente", numberOfTries: 3 } // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
     const dataUser = await usersModel.create(body)
+
+    await sendVerifyCode(dataUser);
+
     dataUser.set('passwd', undefined, { strict: false })
     dataUser.set('verifyCode', undefined, { strict: false })
 

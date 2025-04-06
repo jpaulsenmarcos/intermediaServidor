@@ -17,7 +17,9 @@ const userModel = new mongoose.Schema(
         name: String,
         nif: {
             type: String,
-            unique: true
+            unique: true,
+            sparse: true,
+            default: undefined
         },
         surnames: String,
         company: {

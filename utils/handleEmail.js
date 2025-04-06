@@ -1,6 +1,7 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+const user = require("../models/user");
 const OAuth2 = google.auth.OAuth2
 
 const createTransporter = async () => {
@@ -43,4 +44,15 @@ const sendEmail = async (emailOptions) => {
         console.log(e)
     }
 };
-module.exports = { sendEmail }
+
+const sendVerifyCode = async (user) => {
+    const mailOptions = {
+        subject: "Verificación de cuenta",
+        text: `Hola, tu código de verificación es: ${user.verifyCode}`,
+        from: process.env.EMAIL,
+        to: user.mail
+    };
+    return await sendEmail(mailOptions);
+};
+
+module.exports = { sendEmail, sendVerifyCode }
