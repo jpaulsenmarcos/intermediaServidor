@@ -98,7 +98,7 @@ userRouter.post('/', validatorCreateItem, createUser);
  *       security:
  *           - bearerAuth: []
  */
-userRouter.put('/register', authMiddleware, validatorOnBoardingUser, onBoardingUser)
+userRouter.put('/', authMiddleware, validatorOnBoardingUser, onBoardingUser)
 
 /**
  *  @openapi
