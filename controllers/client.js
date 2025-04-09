@@ -41,4 +41,23 @@ const getOneClientFromUserById = async (req, res) => {
     }
 }
 
-module.exports = { createClient, getClientsFromUser, getOneClientFromUserById }
+const updateClient = async (req, res) => {
+    try {
+        const data = matchedData(req);
+        if (!data.cif) {
+            return res.status(400).json({ error: 'FALTA CIF EN LA PETICIÓN' });
+        }
+        const filtro = { cif: data.cif, createdBy: req.user._id }
+        const clientUpdate = await clientModel.findOneAndUpdate(filtro, data, { new: true })
+        if (!clientUpdate) {
+            return handleHttpError(res, 'ERROR_CLIENT_INEXISTENT')
+        }
+        res.send({ clientUpdate })
+        res.status(200)
+    } catch (err) {
+        console.log(err)
+        handleHttpError(res, 'ERROR_UPDATE_CLIENTS')
+    }
+}
+
+module.exports = { createClient, getClientsFromUser, getOneClientFromUserById, updateClient }

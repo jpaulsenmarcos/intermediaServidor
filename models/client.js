@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 const clientModel = new mongoose.Schema(
     {
         name: String,
-        cif: String,
+        cif: {
+            type: String,
+            unique: true,
+        },
         address: {
             street: String,
             number: Number,
