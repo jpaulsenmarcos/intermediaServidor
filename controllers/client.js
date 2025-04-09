@@ -97,4 +97,45 @@ const deleteClient = async (req, res) => {
     }
 }
 
-module.exports = { createClient, getClientsFromUser, getOneClientFromUserById, updateClient, archivarCliente, deleteClient }
+const getArchivedClients = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const data = await clientModel.find({ createdBy: userId, archivado: true });
+        if (!data.length) {
+            return handleHttpError(res, 'ERROR_NO_ARCHIVED_CLIENTS')
+        }
+        res.send({ data })
+        res.status(200)
+    } catch (err) {
+        console.log(err)
+        handleHttpError(res, 'ERROR_GET_ARCHIVED_CLIENTS')
+    }
+}
+
+const restoreClient = async (req, res) => {
+    try {
+        const data = matchedData(req);
+        if (!data.cif) {
+            return res.status(400).json({ error: 'FALTA CIF EN LA PETICIÓN' });
+        }
+        const filtro = { cif: data.cif, createdBy: req.user._id }
+
+        const clienteEncontrado = await clientModel.findOne(filtro)
+
+        if (clienteEncontrado.archivado === false) {
+            return handleHttpError(res, 'ERROR_CLIENT_NOT_ARCHIVED')
+        }
+
+        const archivoCliente = await clientModel.findOneAndUpdate(filtro, { $set: { archivado: false } }, { new: true })
+        if (!archivoCliente) {
+            return handleHttpError(res, 'ERROR_CLIENT_INEXISTENT')
+        }
+        res.send({ message: "restaurado!" })
+        res.status(200)
+    } catch (err) {
+        console.log(err)
+        handleHttpError(res, 'ERROR_RESTORE_CLIENT')
+    }
+}
+
+module.exports = { createClient, getClientsFromUser, getOneClientFromUserById, updateClient, archivarCliente, deleteClient, getArchivedClients, restoreClient }

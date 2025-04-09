@@ -165,11 +165,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYTAwM
 ###
 POST http://localhost:3001/api/client HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4MWMwZmIzZjlmMTk5NDk5ZmUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQxODQzMTksImV4cCI6MTc0NDE5MTUxOX0.Wq1ppKclo93Ysd3Oq3iEEyhjX1JjDomQUJQ-6kXZXog
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTcxNzQsImV4cCI6MTc0NDIyNDM3NH0.Dy4RER_okyOdk3kqYz5iRGxdU1XG69NBlX5T10JrE9I
 
 {
-    "name": "PEPE",
-    "cif": "D52431211",
+    "name": "PKK",
+    "cif": "D52431244",
     "address": {
         "street": "Felipe VI",
         "number": 20,
@@ -182,12 +182,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4M
 ###
 GET http://localhost:3001/api/client HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTMwMzAsImV4cCI6MTc0NDIyMDIzMH0.DdReEKNdNYTOhUjzc8D0ys6_ye0W9yJG-NrDcf3QcUA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTcxNzQsImV4cCI6MTc0NDIyNDM3NH0.Dy4RER_okyOdk3kqYz5iRGxdU1XG69NBlX5T10JrE9I
 
 ###
-GET http://localhost:3001/api/client/67f54ed1c0fb3f9f19949a05 HTTP/1.1
+GET http://localhost:3001/api/client/67f54d6b86271c31199a2e9e HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4MWMwZmIzZjlmMTk5NDk5ZmUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQxMzExMjksImV4cCI6MTc0NDEzODMyOX0.DONA1VZWIB3Sw9zshsqm19F3Virp0MfB4EKVVwepWj8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTU4MDIsImV4cCI6MTc0NDIyMzAwMn0.LOT1ks2w657wQRQNR2z79WWulPHoIBPgeS-YbHPRDOE
 
 ###
 PUT http://localhost:3001/api/client HTTP/1.1
@@ -209,7 +209,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 DELETE http://localhost:3001/api/client/archivar HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTMwMzAsImV4cCI6MTc0NDIyMDIzMH0.DdReEKNdNYTOhUjzc8D0ys6_ye0W9yJG-NrDcf3QcUA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTcxNzQsImV4cCI6MTc0NDIyNDM3NH0.Dy4RER_okyOdk3kqYz5iRGxdU1XG69NBlX5T10JrE9I
 
 {
     "cif":"D52921222"
@@ -224,3 +224,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
     "cif":"D52921210"
 }
 
+###
+GET http://localhost:3001/api/client/archived HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTYwNDMsImV4cCI6MTc0NDIyMzI0M30.LYVW1IdEbR90wdvfgV1dNwOYTfx3UgVOjxGu8pFP1uY
+
+###
+DELETE http://localhost:3001/api/client/restore HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTcxNzQsImV4cCI6MTc0NDIyNDM3NH0.Dy4RER_okyOdk3kqYz5iRGxdU1XG69NBlX5T10JrE9I
+
+{
+    "cif":"D52921222"
+}
