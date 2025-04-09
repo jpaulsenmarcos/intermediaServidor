@@ -12,5 +12,9 @@ const validatorCreateClient = [
     check("address.province").notEmpty().withMessage("FALTA PROVINCE"),
     validateResults
 ]
+const validatorSoftClient = [
+    check("cif").notEmpty().withMessage("FALTA CIF"),
+    validateResults
+]
 
-module.exports = { validatorCreateClient }
+module.exports = { validatorCreateClient, validatorSoftClient }

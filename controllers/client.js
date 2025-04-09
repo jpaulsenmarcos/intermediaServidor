@@ -60,4 +60,41 @@ const updateClient = async (req, res) => {
     }
 }
 
-module.exports = { createClient, getClientsFromUser, getOneClientFromUserById, updateClient }
+const archivarCliente = async (req, res) => {
+    try {
+        const data = matchedData(req);
+        if (!data.cif) {
+            return res.status(400).json({ error: 'FALTA CIF EN LA PETICIÓN' });
+        }
+        const filtro = { cif: data.cif, createdBy: req.user._id }
+
+        const archivoCliente = await clientModel.findOneAndUpdate(filtro, { $set: { archivado: true } }, { new: true })
+        if (!archivoCliente) {
+            return handleHttpError(res, 'ERROR_CLIENT_INEXISTENT')
+        }
+        res.send({ message: "archivado!" })
+        res.status(200)
+    } catch (err) {
+        handleHttpError(res, 'ERROR_SOFT_CLIENT')
+    }
+}
+
+const deleteClient = async (req, res) => {
+    try {
+        const data = matchedData(req);
+        if (!data.cif) {
+            return res.status(400).json({ error: 'FALTA CIF EN LA PETICIÓN' });
+        }
+        const filtro = { cif: data.cif, createdBy: req.user._id }
+        const clienteBorrado = await clientModel.findOneAndDelete(filtro)
+        if (!clienteBorrado) {
+            return handleHttpError(res, 'ERROR_CLIENT_INEXISTENT')
+        }
+        res.send({ message: "eliminado!" })
+        res.status(200)
+    } catch (err) {
+        handleHttpError(res, 'ERROR_DELETE_CLIENT')
+    }
+}
+
+module.exports = { createClient, getClientsFromUser, getOneClientFromUserById, updateClient, archivarCliente, deleteClient }
