@@ -16,7 +16,8 @@ const projectModel = new mongoose.Schema(
             province: String
         },
         code: String,
-        clientId: String
+        clientId: String,
+        notes: String
     }
 )
 

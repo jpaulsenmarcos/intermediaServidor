@@ -182,8 +182,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 GET http://localhost:3001/api/client HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyNzE4MDksImV4cCI6MTc0NDI3OTAwOX0.GMARVj5h-GxrCQuZNLsQwGo5f6MAHUPvxF0YuM6azq0
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQzNjYwOTUsImV4cCI6MTc0NDM3MzI5NX0.5paNeQORVozDRNqhNlCJpeamL9tKp08CqB-sgZLP5-Q
 ###
 GET http://localhost:3001/api/client/67f54d6b86271c31199a2e9e HTTP/1.1
 Content-Type: application/json
@@ -256,3 +255,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
     "code": "0001",
     "clientId": "67f54d6b86271c31199a2e9e"
 }
+
+###
+PUT http://localhost:3001/api/project/67f77a02d2b75688b4c4542c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4MWMwZmIzZjlmMTk5NDk5ZmUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQzMDMxMTAsImV4cCI6MTc0NDMxMDMxMH0.Xa-HVnunvdjxKU8pcVWLHXdYEfnHSOn9fsWEbDSkUS8
+
+{
+    "name": "ProyectoclienteHGS",
+    "email": "juanito@gmail.com",
+    "address": {
+        "street": "Carlos V",
+        "number": 22,
+        "postal": 28936,
+        "city": "Móstoles",
+        "province": "Madrid"
+    },
+    "code": "0001",
+    "notes": "Actualización 10 de abril"
+}
+
+###
+GET http://localhost:3001/api/project HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQzNjUzMTUsImV4cCI6MTc0NDM3MjUxNX0.VrjBH9_YxUOFvS5Rdx09iPNjNrx15KHuhqpJ-MkzlcY
+
+###
+GET http://localhost:3001/api/project/client/67f54d6b86271c31199a2e9e HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQzNjYwOTUsImV4cCI6MTc0NDM3MzI5NX0.5paNeQORVozDRNqhNlCJpeamL9tKp08CqB-sgZLP5-Q
