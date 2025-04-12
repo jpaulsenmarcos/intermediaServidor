@@ -3,10 +3,6 @@ const mongoose = require('mongoose')
 const projectModel = new mongoose.Schema(
     {
         name: String,
-        projectCode: {
-            type: String,
-            unique: true
-        },
         email: String,
         address: {
             street: String,
@@ -17,7 +13,11 @@ const projectModel = new mongoose.Schema(
         },
         code: String,
         clientId: String,
-        notes: String
+        notes: String,
+        archivado: {
+            type: Boolean,
+            default: false
+        }
     }
 )
 

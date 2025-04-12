@@ -240,10 +240,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 POST http://localhost:3001/api/project HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyNzE4MDksImV4cCI6MTc0NDI3OTAwOX0.GMARVj5h-GxrCQuZNLsQwGo5f6MAHUPvxF0YuM6azq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODkzNzAsImV4cCI6MTc0NDQ5NjU3MH0.RSN7MrY6j77_i9yqd2uvCf-hmF59-XbNwkcrMBkcZWc
 
 {
-    "name": "ProyectoclienteHGS",
+    "name": "ProyectoMIN",
     "email": "mimail@gmail.com",
     "address": {
         "street": "Carlos V",
@@ -252,7 +252,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
         "city": "Móstoles",
         "province": "Madrid"
     },
-    "code": "0001",
+    "code": "0002",
     "clientId": "67f54d6b86271c31199a2e9e"
 }
 
@@ -278,7 +278,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4M
 ###
 GET http://localhost:3001/api/project HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQzNjUzMTUsImV4cCI6MTc0NDM3MjUxNX0.VrjBH9_YxUOFvS5Rdx09iPNjNrx15KHuhqpJ-MkzlcY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODkzNzAsImV4cCI6MTc0NDQ5NjU3MH0.RSN7MrY6j77_i9yqd2uvCf-hmF59-XbNwkcrMBkcZWc
 
 ###
 GET http://localhost:3001/api/project/client/67f54d6b86271c31199a2e9e HTTP/1.1
@@ -288,4 +288,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 GET http://localhost:3001/api/project/67f54d6b86271c31199a2e9e/67f77a02d2b75688b4c4542c HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0Nzg0OTAsImV4cCI6MTc0NDQ4NTY5MH0.atm1myIj2OpY4THw1O8DqZyK2JWzQf2uqS0mUrK4cgw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODI2NjMsImV4cCI6MTc0NDQ4OTg2M30.onADOJJgipjXC7xCO9hXA5YfFfdy819X34lFJFiccxQ
+
+###
+PUT http://localhost:3001/api/project/archivar/67f54d6b86271c31199a2e9e/67face4b3ac91fbe9b9a1b99 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODkzNzAsImV4cCI6MTc0NDQ5NjU3MH0.RSN7MrY6j77_i9yqd2uvCf-hmF59-XbNwkcrMBkcZWc
+
+###
+DELETE http://localhost:3001/api/project/67f54d6b86271c31199a2e9e/67f77a02d2b75688b4c4542c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODkzNzAsImV4cCI6MTc0NDQ5NjU3MH0.RSN7MrY6j77_i9yqd2uvCf-hmF59-XbNwkcrMBkcZWc
+
+###
+GET http://localhost:3001/api/project/archived HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ0ODkzNzAsImV4cCI6MTc0NDQ5NjU3MH0.RSN7MrY6j77_i9yqd2uvCf-hmF59-XbNwkcrMBkcZWc
