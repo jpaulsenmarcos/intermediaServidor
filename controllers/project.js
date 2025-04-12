@@ -86,8 +86,27 @@ const getProjectsFromClient = async (req, res) => {
 
 const getOneProject = async (req, res) => {
 
+    try {
+        const userId = req.user._id
+        const { clientParam, projectParam } = req.params
 
+        if (!clientParam && !projectParam) {
+            return handleHttpError(res, 'ERROR_INSUFICIENT_PARAMS')
+        }
+        const cliente = await clientModel.findOne({ _id: clientParam })
+        if (String(cliente.createdBy) !== String(userId)) {
+            return handleHttpError(res, 'ERROR_NOT_YOUR_CLIENT')
+        }
+        const project = await projectModel.findOne({ _id: projectParam, clientId: cliente._id })
+        if (!project) {
+            return handleHttpError(res, 'ERROR_NO_PROJECTS')
+        }
+        res.send({ project })
+        res.status(200)
+    } catch (err) {
+        handleHttpError(res, 'ERROR_GET_YOUR_PROJECT')
+    }
 
 }
 
-module.exports = { createProject, updateProject, getAllYourProjects, getProjectsFromClient }
+module.exports = { createProject, updateProject, getAllYourProjects, getProjectsFromClient, getOneProject }
