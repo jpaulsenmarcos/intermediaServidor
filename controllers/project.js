@@ -169,4 +169,24 @@ const getArchivedProjects = async (req, res) => {
     }
 }
 
-module.exports = { createProject, updateProject, getAllYourProjects, getProjectsFromClient, getOneProject, archivarProyecto, deleteProject, getArchivedProjects }
+const recoverProject = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const { clientParam, projectParam } = req.params
+        const cliente = await clientModel.findOne({ _id: clientParam })
+        if (String(cliente.createdBy) !== String(userId)) {
+            return handleHttpError(res, 'ERROR_NOT_YOUR_CLIENT')
+        }
+        const filtro = { _id: projectParam, clientId: clientParam }
+        const archivoProyecto = await projectModel.findOneAndUpdate(filtro, { $set: { archivado: false } }, { new: true })
+        if (!archivoProyecto) {
+            return handleHttpError(res, 'ERROR_PROJECT_INEXISTENT')
+        }
+        res.send({ message: "recuperado!" })
+        res.status(200)
+    } catch (err) {
+
+    }
+}
+
+module.exports = { createProject, updateProject, getAllYourProjects, getProjectsFromClient, getOneProject, archivarProyecto, deleteProject, getArchivedProjects, recoverProject }
