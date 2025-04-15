@@ -44,7 +44,8 @@ const userModel = new mongoose.Schema(
         autonomo: {
             type: Boolean,
             default: false
-        }
+        },
+        createdBy: mongoose.Schema.ObjectId
     },
     {
         timestamps: true,

@@ -118,6 +118,7 @@ const deleteUser = async (req, res) => {
 
 const inviteUser = async (req, res) => {
     try {
+        const userId = req.user._id
         const body = matchedData(req)
         const invitante = req.user
         if (!invitante) {
@@ -135,6 +136,7 @@ const inviteUser = async (req, res) => {
             ...body,
             passwd: password,
             role: 'guest',
+            createdBy: userId,
             company: invitante.company
         }
         const invitado = await userModel.create(dataInvitado)

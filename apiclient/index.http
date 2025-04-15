@@ -62,6 +62,15 @@ Content-Type: application/json
     "passwd": "A12345678"
 }
 
+###
+POST http://localhost:3001/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "mail": "InvitadoDos@correo.es",
+    "passwd": "A12345678"
+}
+
 ####
 
 PUT http://localhost:3001/api/users HTTP/1.1
@@ -125,14 +134,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2UyYWY5Y
 
 POST http://localhost:3001/api/users/guest HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U2ZWIzZjAzYzllYmIwNDEzNzk5MjUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMxODY4NDMsImV4cCI6MTc0MzE5NDA0M30.l4MuIBW6ZiOGQWdWp3_NmbacpU2y21Fa3CZH02CCzRA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ3MjAxODQsImV4cCI6MTc0NDcyNzM4NH0.GUMU334tXFyt94_ClESHgmQ_Kkvsfk8fSqpT5Xr93fM
 
 {
-    "mail": "InvitadoUno@correo.es",
+    "mail": "InvitadoDos@correo.es",
     "passwd": "A12345678",
     "name": "Pepe",
     "surnames": "Invitado",
-    "nif": "40000000W"
+    "nif": "40000000N"
 }
 
 ###
@@ -333,4 +342,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 GET http://localhost:3001/api/deliverynote/ById/67fd5222f63cb4548b0ac142 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ2NTE4MjQsImV4cCI6MTc0NDY1OTAyNH0.YgaFxdLFB-57yyxxqRhHB3pE1krGepqT6WKgdqIkIYc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ2NjU2MDgsImV4cCI6MTc0NDY3MjgwOH0.wZ6Sp0dlVPlQhYw3uZZz4I_OEtDWhteTAGjn1LhwOAE
+
+###
+GET http://localhost:3001/api/deliverynote/pdf/67fd5222f63cb4548b0ac142 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4MWMwZmIzZjlmMTk5NDk5ZmUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ3MjEyNzYsImV4cCI6MTc0NDcyODQ3Nn0.X9_MNqtRWoXLo75pQ-DEujIMIA0N_sp2fKPnpw8VtEo
