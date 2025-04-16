@@ -347,3 +347,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 GET http://localhost:3001/api/deliverynote/pdf/67fd5222f63cb4548b0ac142 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1NGU4MWMwZmIzZjlmMTk5NDk5ZmUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ3MjEyNzYsImV4cCI6MTc0NDcyODQ3Nn0.X9_MNqtRWoXLo75pQ-DEujIMIA0N_sp2fKPnpw8VtEo
+
+###
+
+PATCH http://localhost:3001/api/deliverynote/signimage/67fd5222f63cb4548b0ac142 HTTP/1.1
+Content-Type: multipart/form-data; boundary=boundary123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ3Mzc4MzcsImV4cCI6MTc0NDc0NTAzN30.P89hVnp3Wp54EmUAtzr3dUqRrQoMSW3OeqLreKWa4xU
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="firma.png"
+Content-Type: image/jpeg
+
+< ./firma.png
+--boundary123--
+
+###
+PATCH http://localhost:3001/api/deliverynote/signedPdf/67fd5222f63cb4548b0ac142 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ4MDUyMzIsImV4cCI6MTc0NDgxMjQzMn0.5yEFf53dSPMsQ-wiEzB8ymaV6zCzZdNgblt7Dt0Si0E

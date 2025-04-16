@@ -17,6 +17,10 @@ const deliveryModel = new mongoose.Schema(
         hours: Number,
         description: String,
         workdate: Date,
+        firma: {
+            name: String,
+            url: String
+        }
     }
 )
 
