@@ -1,5 +1,5 @@
 const express = require('express')
-const { createProject, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf } = require('../controllers/deliverynote.js')
+const { createProject, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf, deleteDeliverynote } = require('../controllers/deliverynote.js')
 const { uploadMiddlewareMemory } = require('../utils/handleStorage.js')
 const { validatorCreateDeliverynote } = require('../validators/deliverynote.js')
 const authMiddleware = require('../middleware/session.js')
@@ -16,5 +16,6 @@ deliveryRouter.patch("/signimage/:id", authMiddleware, uploadMiddlewareMemory.si
     res.status(413).send("Error capturado")
 }, signDeliverynote)
 deliveryRouter.patch('/signedPdf/:id', authMiddleware, downloadSignedPdf)
+deliveryRouter.delete('/delete/:id', authMiddleware, deleteDeliverynote)
 
 module.exports = deliveryRouter

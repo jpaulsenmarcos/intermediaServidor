@@ -14,6 +14,7 @@ const deliveryModel = new mongoose.Schema(
             type: String,
             enum: ["material", "hours"]
         },
+        material: String,
         hours: Number,
         description: String,
         workdate: Date,

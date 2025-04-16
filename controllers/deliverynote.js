@@ -225,4 +225,30 @@ const downloadSignedPdf = async (req, res) => {
     }
 }
 
-module.exports = { createProject, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf }
+const deleteDeliverynote = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const { id } = req.params
+        const deliverynote = await deliveryModel.findById(id)
+        if (!deliverynote) {
+            return handleHttpError(res, 'ERROR_NO_DELIVERYNOTE')
+        }
+        const cliente = await clientModel.findById(deliverynote.clientId)
+        if (String(cliente.createdBy) !== String(userId)) {
+            return handleHttpError(res, 'ERROR_NOT_YOUR_CLIENT')
+        }
+        const hayFirma = deliverynote.firma && ((deliverynote.firma.url && deliverynote.firma.url.length > 0) || (deliverynote.firma.name && deliverynote.firma.name.length > 0)
+        )
+        if (hayFirma) {
+            return handleHttpError(res, 'ERROR_IS_SIGNED')
+        } else {
+            const deliverynoteBorrado = await deliveryModel.findByIdAndDelete(id)
+        }
+        res.send({ message: "eliminado!" })
+        res.status(200)
+    } catch (err) {
+        handleHttpError(res, 'ERROR_DELETE_DELIVERYNOTE_BY_ID')
+    }
+}
+
+module.exports = { createProject, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf, deleteDeliverynote }

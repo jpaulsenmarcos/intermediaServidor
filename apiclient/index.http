@@ -322,13 +322,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 POST http://localhost:3001/api/deliverynote HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ2NTE4MjQsImV4cCI6MTc0NDY1OTAyNH0.YgaFxdLFB-57yyxxqRhHB3pE1krGepqT6WKgdqIkIYc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ4MjMyMTYsImV4cCI6MTc0NDgzMDQxNn0.vs2HPB_FCSz9LvsLBM_d2hsMIe0cL-APBT8PapiByx0
 
 {
     "clientId": "67f54d6b86271c31199a2e9e",
     "projectId": "67facd7bd1de8890e7600b29",
     "format": "material",
-    "material": "type of material",
+    "material": "wood",
     "hours": 8,
     "description": "my description",
     "workdate": "2/1/2024"
@@ -365,3 +365,8 @@ Content-Type: image/jpeg
 PATCH http://localhost:3001/api/deliverynote/signedPdf/67fd5222f63cb4548b0ac142 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ4MDUyMzIsImV4cCI6MTc0NDgxMjQzMn0.5yEFf53dSPMsQ-wiEzB8ymaV6zCzZdNgblt7Dt0Si0E
+
+###
+DELETE http://localhost:3001/api/deliverynote/delete/67ffe3fde9a3026a3189313f HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ4MjMyMTYsImV4cCI6MTc0NDgzMDQxNn0.vs2HPB_FCSz9LvsLBM_d2hsMIe0cL-APBT8PapiByx0
