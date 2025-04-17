@@ -326,10 +326,88 @@ const options = {
                         }
                     }
                 },
-                getDeliverynotes: {
+                updateProject: {
                     type: "object",
-                    required: []
+                    required: ["name", "email", "address", "code", "notes"],
+                    properties: {
+                        name: {
+                            type: "string",
+                            example: "Nombre del proyecto"
+                        },
+                        email: {
+                            type: "string",
+                            example: "mimail@gmail.com"
+                        },
+                        address: {
+                            type: "object",
+                            required: ["street", "number", "postal", "city", "province"],
+                            properties: {
+                                street: {
+                                    type: "string",
+                                    example: "Carlos V"
+                                },
+                                number: {
+                                    type: "number",
+                                    example: 22
+                                },
+                                postal: {
+                                    type: "number",
+                                    example: 28936
+                                },
+                                city: {
+                                    type: "string",
+                                    example: "Móstoles"
+                                },
+                                province: {
+                                    type: "string",
+                                    example: "Madrid"
+                                }
+                            }
+                        },
+                        code: {
+                            type: "string",
+                            example: "Código interno del proyecto"
+                        },
+                        notes: {
+                            type: "string",
+                            example: "actualización 2"
+                        }
+                    }
                 },
+                createDelivery: {
+                    type: "object",
+                    required: ["clientId", "projectId", "format", "material", "hours", "description", "workdate"],
+                    properties: {
+                        clientId: {
+                            type: "string",
+                            example: "67f54d6b86271c31199a2e9e"
+                        },
+                        projectId: {
+                            type: "string",
+                            example: "67f54d6b86271c31199a2e9e"
+                        },
+                        format: {
+                            type: "string",
+                            example: "material o hours"
+                        },
+                        material: {
+                            type: "string",
+                            example: "wood"
+                        },
+                        hours: {
+                            type: "number",
+                            example: 6
+                        },
+                        description: {
+                            type: "string",
+                            example: "description of deliverynote"
+                        },
+                        workdate: {
+                            type: "date",
+                            example: "2/1/2024"
+                        }
+                    }
+                }
             },
         },
     },

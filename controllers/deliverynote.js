@@ -8,7 +8,7 @@ const { handleHttpError } = require('../utils/handleError.js')
 const PDFDocument = require('pdfkit')
 const axios = require('axios')
 
-const createProject = async (req, res) => {
+const createDelivery = async (req, res) => {
     try {
         console.log("Hola")
         const body = matchedData(req)
@@ -251,4 +251,4 @@ const deleteDeliverynote = async (req, res) => {
     }
 }
 
-module.exports = { createProject, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf, deleteDeliverynote }
+module.exports = { createDelivery, getDeliverynotes, getDeliveryNoteById, downloadPdf, signDeliverynote, downloadSignedPdf, deleteDeliverynote }

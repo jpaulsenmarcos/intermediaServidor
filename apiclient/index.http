@@ -322,7 +322,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZ
 ###
 POST http://localhost:3001/api/deliverynote HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ4MjMyMTYsImV4cCI6MTc0NDgzMDQxNn0.vs2HPB_FCSz9LvsLBM_d2hsMIe0cL-APBT8PapiByx0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQ5Mjc2NDYsImV4cCI6MTc0NDkzNDg0Nn0.8WTK_qpgqxc7I7tTxwtwepcOOFaGjej0hhhJsbRDF9c
 
 {
     "clientId": "67f54d6b86271c31199a2e9e",
