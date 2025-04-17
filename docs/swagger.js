@@ -168,6 +168,168 @@ const options = {
                         }
                     },
                 },
+                createClient: {
+                    type: "object",
+                    required: ["name", "cif", "address"],
+                    properties: {
+                        name: {
+                            type: "string",
+                            example: "ACS"
+                        },
+                        cif: {
+                            type: "string",
+                            example: "D52921210"
+                        },
+                        address: {
+                            type: "object",
+                            required: ["street", "number", "postal", "city", "province"],
+                            properties: {
+                                street: {
+                                    type: "string",
+                                    example: "Carlos V"
+                                },
+                                number: {
+                                    type: "number",
+                                    example: 22
+                                },
+                                postal: {
+                                    type: "number",
+                                    example: 28936
+                                },
+                                city: {
+                                    type: "string",
+                                    example: "Móstoles"
+                                },
+                                province: {
+                                    type: "string",
+                                    example: "Madrid"
+                                }
+                            }
+                        }
+                    }
+                },
+                updateClient: {
+                    type: "object",
+                    required: ["name", "cif", "address"],
+                    properties: {
+                        name: {
+                            type: "string",
+                            example: "ACS"
+                        },
+                        cif: {
+                            type: "string",
+                            example: "D52921210"
+                        },
+                        address: {
+                            type: "object",
+                            required: ["street", "number", "postal", "city", "province"],
+                            properties: {
+                                street: {
+                                    type: "string",
+                                    example: "Carlos V"
+                                },
+                                number: {
+                                    type: "number",
+                                    example: 22
+                                },
+                                postal: {
+                                    type: "number",
+                                    example: 28936
+                                },
+                                city: {
+                                    type: "string",
+                                    example: "Móstoles"
+                                },
+                                province: {
+                                    type: "string",
+                                    example: "Madrid"
+                                }
+                            }
+                        }
+                    }
+                },
+                archivarCliente: {
+                    type: "object",
+                    required: ["cif"],
+                    properties: {
+                        cif: {
+                            type: "string",
+                            example: "D52921222"
+                        }
+                    }
+                },
+                restoreClient: {
+                    type: "object",
+                    required: ["cif"],
+                    properties: {
+                        cif: {
+                            type: "string",
+                            example: "D52921222"
+                        }
+                    }
+                },
+                deleteClient: {
+                    type: "object",
+                    required: ["cif"],
+                    properties: {
+                        cif: {
+                            type: "string",
+                            example: "D52921222"
+                        }
+                    }
+                },
+                createProject: {
+                    type: "object",
+                    required: ["name", "email", "address", "code", "clientId"],
+                    properties: {
+                        name: {
+                            type: "string",
+                            example: "Nombre del proyecto"
+                        },
+                        email: {
+                            type: "string",
+                            example: "mimail@gmail.com"
+                        },
+                        address: {
+                            type: "object",
+                            required: ["street", "number", "postal", "city", "province"],
+                            properties: {
+                                street: {
+                                    type: "string",
+                                    example: "Carlos V"
+                                },
+                                number: {
+                                    type: "number",
+                                    example: 22
+                                },
+                                postal: {
+                                    type: "number",
+                                    example: 28936
+                                },
+                                city: {
+                                    type: "string",
+                                    example: "Móstoles"
+                                },
+                                province: {
+                                    type: "string",
+                                    example: "Madrid"
+                                }
+                            }
+                        },
+                        code: {
+                            type: "string",
+                            example: "Código interno del proyecto"
+                        },
+                        clientId: {
+                            type: "string",
+                            example: "mongoId"
+                        }
+                    }
+                },
+                getDeliverynotes: {
+                    type: "object",
+                    required: []
+                },
             },
         },
     },

@@ -238,7 +238,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTYwNDMsImV4cCI6MTc0NDIyMzI0M30.LYVW1IdEbR90wdvfgV1dNwOYTfx3UgVOjxGu8pFP1uY
 
 ###
-DELETE http://localhost:3001/api/client/restore HTTP/1.1
+PATCH http://localhost:3001/api/client/restore HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YyYzJjZmFmOTFiOTc5NjYwOWZhZjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDQyMTcxNzQsImV4cCI6MTc0NDIyNDM3NH0.Dy4RER_okyOdk3kqYz5iRGxdU1XG69NBlX5T10JrE9I
 
