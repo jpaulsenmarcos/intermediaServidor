@@ -4,6 +4,7 @@ const loggerStream = require('./utils/handleLogger.js')
 const cors = require('cors')
 const swaggerUi = require("swagger-ui-express")
 const swaggerSpecs = require("./docs/swagger")
+require('dotenv').config()
 
 require('dotenv').config()
 
@@ -35,8 +36,13 @@ const port = process.env.PORT || 3001
 
 console.log(process.env.JWT_SECRET)
 
-app.listen(port, () => {
-    console.log(`Escuchando en el puerto ${port}`)
-})
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(port, () => {
+        console.log(`Escuchando en el puerto ${port}`)
+    })
+}
+
 
 dbConnect()
+
+module.exports = app
