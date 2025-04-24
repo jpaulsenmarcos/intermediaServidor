@@ -56,6 +56,17 @@ describe('user endpoints', () => {
         expect(body.user.company.cif).toBe('B12345678')
     });
 
+    it('should invite a guest user', async () => {
+        const guestMail = `guest${Date.now()}@correo.es`
+        const { body } = await api.post('/api/users/guest').auth(token, { type: 'bearer' })
+            .send({ mail: guestMail, passwd: 'passwd', name: 'Pepe', surnames: 'Invitado', nif: '40000000N' })
+            .expect(200).expect('Content-Type', /application\/json/)
+
+        expect(body.data.role).toBe('guest')
+        expect(body.data.createdBy).toBe(userId)
+        expect(body.data.mail).toBe(guestMail)
+    })
+
     it('should soft-delete a user', async () => {
         const { body } = await api.delete('/api/users?soft=true').auth(token, { type: 'bearer' })
             .expect(200).expect('Content-Type', /application\/json/)
