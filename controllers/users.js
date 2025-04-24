@@ -103,9 +103,11 @@ const deleteUser = async (req, res) => {
             user.deleted = true
             await user.save()
             console.log('Usuario borrado SOFT')
+            return res.send(true)
         } else if (soft === "false") {
             await userModel.findByIdAndDelete(userId)
             console.log('Usuario borrado HARD')
+            return res.send(true)
         } else {
             handleHttpError(res, 'INVALID_SOFT_PARAM')
             return

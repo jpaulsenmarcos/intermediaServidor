@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node --watch app.js",
-    "test": "cross-env NODE_ENV=test jest --verbose --detectOpenHandles"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
