@@ -8,9 +8,8 @@ jest.setTimeout(30000)
 describe('client endpoints', () => {
     let token
     let clientId
-    const api = supertest(app)
-
     let clientCif
+    const api = supertest(app)
 
     beforeAll(async () => {
         await clientModel.deleteMany({})
