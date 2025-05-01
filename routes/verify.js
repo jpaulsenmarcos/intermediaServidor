@@ -10,7 +10,7 @@ const verifyRouter = express.Router()
  *  /api/verify:
  *   post:
  *       tags:
- *       - User
+ *       - Verify
  *       summary: "User verificationCtrl"
  *       description: function to verify your mail via code
  *       requestBody:
@@ -21,9 +21,15 @@ const verifyRouter = express.Router()
  *                      
  *       responses:
  *           '200':
- *               description: Returns the inserted object
+ *               description: Verificación exitosa. Devuelve un mensaje de confirmación.
  *           '401':
- *               description: Validation error
+ *               description: No coincide el email/token del usuario (usuario no encontrado).
+ *           '422':
+ *               description: Código de verificación incorrecto. El usuario aún tiene intentos restantes.
+ *           '429':
+ *               description: No hay más intentos disponibles para verificar el código.
+ *           '409':
+ *               description: Error general durante el proceso de verificación.
  *       security:
  *           - bearerAuth: []
  */

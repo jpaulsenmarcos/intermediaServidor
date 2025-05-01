@@ -20,9 +20,9 @@ const router = express.Router()
  *                       $ref: "#/components/schemas/registerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Registro exitoso. Devuelve el usuario creado y un token.
+ *           '409':
+ *               description: Error en el registro (validación, duplicado, etc.).
  */
 
 router.post("/register", validatorRegister, registerCtrl)
@@ -42,9 +42,13 @@ router.post("/register", validatorRegister, registerCtrl)
  *                       $ref: "#/components/schemas/login"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
+ *               description: Login exitoso. Devuelve el usuario y un token.
  *           '401':
- *               description: Validation error
+ *               description: Contraseña inválida.
+ *           '404':
+ *               description: El usuario no existe.
+ *           '409':
+ *               description: Error en el proceso de login.
  */
 router.post("/login", validatorLogin, loginCtrl)
 
@@ -63,9 +67,9 @@ router.post("/login", validatorLogin, loginCtrl)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Petición de recuperación de contraseña enviada correctamente.
+ *           '409':
+ *               description: Error en la petición de recuperación de contraseña.
  *       security:
  *           - bearerAuth: []
  */
@@ -86,9 +90,9 @@ router.post("/passPetition", authMiddleware, passwdRecoverPetition)
  *                      $ref: "#/components/schemas/passChange"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
+ *               description: Cambio de contraseña exitoso.
  *           '401':
- *               description: Validation error
+ *               description: Error en el cambio de contraseña (código incorrecto, validación, etc.).
  *       security:
  *           - bearerAuth: []
  */

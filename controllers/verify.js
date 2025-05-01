@@ -28,7 +28,7 @@ const verificationCtrl = async (req, res) => {
         const user = await userModel.findById(userId)
 
         if (!user) {
-            return handleHttpError(res, 'ERROR_NO_MAIL_COINCIDENCE')
+            return handleHttpError(res, 'ERROR_NO_MAIL_COINCIDENCE', 401)
         }
 
         if (user.numberOfTries > 0) {
@@ -46,10 +46,10 @@ const verificationCtrl = async (req, res) => {
                 user.estado = "rechazado"
                 user.numberOfTries = user.numberOfTries - 1
                 await user.save()
-                return handleHttpError(res, 'ERROR_WRONG_CODE')
+                return handleHttpError(res, 'ERROR_WRONG_CODE', 422)
             }
         } else {
-            return handleHttpError(res, 'NO_MORE_TRIES_AVALIABLE')
+            return handleHttpError(res, 'NO_MORE_TRIES_AVALIABLE', 429)
         }
     } catch (err) {
         console.error("Error en verificationCtrl:", err);

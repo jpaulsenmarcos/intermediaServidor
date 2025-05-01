@@ -20,9 +20,9 @@ const projectRouter = express.Router();
  *                       $ref: "#/components/schemas/createProject"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: DEvuelve el proyecto creado exitosamente.
+ *           '409':
+ *               description: Error al crear el proyecto.
  *       security:
  *           - bearerAuth: []
  */
@@ -42,9 +42,9 @@ projectRouter.post('/', authMiddleware, validatorCreateProject, createProject)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve la lista de proyectos del usuario autenticado.
+ *           '409':
+ *               description: No hay clientes o proyectos asociados.
  *       security:
  *           - bearerAuth: []
  */
@@ -64,9 +64,9 @@ projectRouter.get('/', authMiddleware, getAllYourProjects)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve la lista de proyectos archivados.
+ *           '409':
+ *               description: No hay proyectos archivados o error al obtenerlos.
  *       security:
  *           - bearerAuth: []
  */
@@ -94,9 +94,11 @@ projectRouter.get('/archived', authMiddleware, getArchivedProjects)
  *                       $ref: "#/components/schemas/updateProject"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve el proyecto actualizado correctamente.
+ *           '404':
+ *               description: Proyecto no encontrado.
+ *           '409':
+ *               description: El proyecto no pertenece al usuario o error al actualizar.
  *       security:
  *           - bearerAuth: []
  */
@@ -124,9 +126,9 @@ projectRouter.put('/:id', authMiddleware, validatorUpdateProject, updateProject)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve los proyectos del cliente obtenidos correctamente.
+ *           '409':
+ *               description: Cliente no válido, sin proyectos o no autorizado.
  *       security:
  *           - bearerAuth: []
  */
@@ -161,9 +163,9 @@ projectRouter.get('/client/:id', authMiddleware, getProjectsFromClient)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve un proyecto específico obtenido correctamente.
+ *           '409':
+ *               description: Proyecto no encontrado o cliente no válido.
  *       security:
  *           - bearerAuth: []
  */
@@ -198,9 +200,9 @@ projectRouter.get('/:clientParam/:projectParam', authMiddleware, getOneProject)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Proyecto archivado correctamente.
+ *           '409':
+ *               description: Proyecto inexistente o cliente no autorizado.
  *       security:
  *           - bearerAuth: []
  */
@@ -235,9 +237,9 @@ projectRouter.put('/archivar/:clientParam/:projectParam', authMiddleware, archiv
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Proyecto restaurado correctamente.
+ *           '409':
+ *               description: Proyecto inexistente o cliente no autorizado.
  *       security:
  *           - bearerAuth: []
  */
@@ -272,9 +274,9 @@ projectRouter.put('/recuperar/:clientParam/:projectParam', authMiddleware, recov
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Proyecto eliminado permanentemente.
+ *           '409':
+ *               description: Proyecto inexistente o cliente no autorizado.
  *       security:
  *           - bearerAuth: []
  */

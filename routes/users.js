@@ -21,9 +21,9 @@ const userRouter = express.Router();
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve todos los usuarios junto con el usuario autenticado.
+ *           '403':
+ *               description: Error al obtener los usuarios.
  *       security:
  *           - bearerAuth: []
  */
@@ -44,9 +44,9 @@ userRouter.get('/', authMiddleware, getUsers);
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve la información del usuario autenticado.
+ *           '403':
+ *               description: Error al obtener el usuario autenticado.
  *       security:
  *           - bearerAuth: []
  */
@@ -67,9 +67,11 @@ userRouter.get('/mine', authMiddleware, getUserMine);
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Usuario eliminado correctamente (soft o hard).
+ *           '404':
+ *               description: Usuario no encontrado.
+ *           '409':
+ *               description: Error en la lógica de eliminación (parámetro inválido o no definido).
  *       security:
  *           - bearerAuth: []
  */
@@ -92,9 +94,11 @@ userRouter.post('/', validatorCreateItem, createUser);
  *                      
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Información personal del usuario actualizada exitosamente.
+ *           '404':
+ *               description: Usuario no encontrado.
+ *           '409':
+ *               description: Error durante el proceso de onboard del usuario.
  *       security:
  *           - bearerAuth: []
  */
@@ -116,9 +120,11 @@ userRouter.put('/', authMiddleware, validatorOnBoardingUser, onBoardingUser)
  *                      
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Información de la empresa asociada actualizada correctamente.
+ *           '404':
+ *               description: Usuario no encontrado.
+ *           '409':
+ *               description: Error durante el proceso de onboard de empresa.
  *       security:
  *           - bearerAuth: []
  */
@@ -140,9 +146,9 @@ userRouter.patch('/company', authMiddleware, validatorOnBoardingCompany, onBoard
  *                      
  *       responses:
  *           '200':
- *               description: Returns the inserted object
+ *               description: Invitación de usuario con rol invitado creada exitosamente.
  *           '401':
- *               description: Validation error
+ *               description: Error al invitar al usuario (usuario sin empresa, validación, etc.).
  *       security:
  *           - bearerAuth: []
  */

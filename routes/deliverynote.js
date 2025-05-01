@@ -21,9 +21,9 @@ const deliveryRouter = express.Router();
  *                       $ref: "#/components/schemas/createDelivery"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve el Albarán creado exitosamente.
+ *           '409':
+ *               description: Error al crear el albarán.
  *       security:
  *           - bearerAuth: []
  */
@@ -51,9 +51,9 @@ deliveryRouter.post('/', authMiddleware, validatorCreateDeliverynote, createDeli
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve la lista de albaranes asociados al proyecto.
+ *           '409':
+ *               description: Proyecto no válido o sin albaranes, o no autorizado.
  *       security:
  *           - bearerAuth: []
  */
@@ -81,9 +81,9 @@ deliveryRouter.get('/:id', authMiddleware, getDeliverynotes)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve el albarán obtenido correctamente.
+ *           '409':
+ *               description: Albarán inexistente o acceso denegado.
  *       security:
  *           - bearerAuth: []
  */
@@ -111,9 +111,9 @@ deliveryRouter.get('/ById/:id', authMiddleware, getDeliveryNoteById)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: PDF generado y descargado correctamente.
+ *           '409':
+ *               description: Error de acceso o generación del PDF.
  *       security:
  *           - bearerAuth: []
  */
@@ -151,9 +151,11 @@ deliveryRouter.get('/pdf/:id', authMiddleware, downloadPdf)
  *                     description: Imagen de la firma en formato PNG o JPEG
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Firma subida e integrada al albarán correctamente.
+ *           '404':
+ *               description: Albarán no encontrado.
+ *           '409':
+ *               description: Error al guardar la firma.
  *       security:
  *           - bearerAuth: []
  */
@@ -185,9 +187,9 @@ deliveryRouter.patch("/signimage/:id", authMiddleware, uploadMiddlewareMemory.si
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: PDF con firma generado y descargado exitosamente.
+ *           '409':
+ *               description: Error al generar o recuperar PDF firmado, o falta la firma.
  *       security:
  *           - bearerAuth: []
  */
@@ -215,9 +217,9 @@ deliveryRouter.patch('/signedPdf/:id', authMiddleware, downloadSignedPdf)
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Albarán eliminado correctamente.
+ *           '409':
+ *               description: Albarán no existente, acceso denegado o ya firmado.
  *       security:
  *           - bearerAuth: []
  */

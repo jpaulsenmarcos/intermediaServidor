@@ -20,9 +20,9 @@ const clientRouter = express.Router();
  *                       $ref: "#/components/schemas/createClient"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: DEvuelve el cliente creado exitosamente.
+ *           '409':
+ *               description: Error al crear cliente.
  *       security:
  *           - bearerAuth: []
  */
@@ -42,9 +42,9 @@ clientRouter.post('/', authMiddleware, validatorCreateClient, createClient);
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Lista de clientes del usuario autenticado.
+ *           '403':
+ *               description: Error al obtener clientes del usuario.
  *       security:
  *           - bearerAuth: []
  */
@@ -64,9 +64,11 @@ clientRouter.get('/', authMiddleware, getClientsFromUser);
  *                       $ref: "#/components/schemas/updateClient"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Cliente actualizado exitosamente.
+ *           '400':
+ *               description: Faltan datos obligatorios.
+ *           '409':
+ *               description: Cliente no existente o error de actualización.
  *       security:
  *           - bearerAuth: []
  */
@@ -86,9 +88,11 @@ clientRouter.put('/', authMiddleware, validatorCreateClient, updateClient);
  *                       $ref: "#/components/schemas/archivarCliente"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Cliente archivado exitosamente.
+ *           '400':
+ *               description: Faltan datos obligatorios.
+ *           '409':
+ *               description: Cliente no existente o error al archivar.
  *       security:
  *           - bearerAuth: []
  */
@@ -108,9 +112,11 @@ clientRouter.delete('/archivar', authMiddleware, validatorSoftClient, archivarCl
  *                       $ref: "#/components/schemas/restoreClient"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Cliente restaurado exitosamente.
+ *           '400':
+ *               description: Faltan datos obligatorios.
+ *           '409':
+ *               description: Cliente no está archivado o no existe.
  *       security:
  *           - bearerAuth: []
  */
@@ -130,9 +136,11 @@ clientRouter.patch('/restore', authMiddleware, validatorSoftClient, restoreClien
  *                       $ref: "#/components/schemas/deleteClient"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Cliente eliminado permanentemente.
+ *           '400':
+ *               description: Faltan datos obligatorios (como el CIF).
+ *           '409':
+ *               description: Cliente no existente o error al eliminar.
  *       security:
  *           - bearerAuth: []
  */
@@ -152,9 +160,9 @@ clientRouter.delete('/delete', authMiddleware, validatorSoftClient, deleteClient
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Lista de clientes archivados del usuario autenticado.
+ *           '409':
+ *               description: No hay clientes archivados o error al obtenerlos.
  *       security:
  *           - bearerAuth: []
  */
@@ -182,9 +190,11 @@ clientRouter.get('/archived', authMiddleware, getArchivedClients);
  *                      $ref: "#/components/securitySchemes/bearerAuth"
  *       responses:
  *           '200':
- *               description: Returns the inserted object
- *           '401':
- *               description: Validation error
+ *               description: Devuelve el cliente obtenido correctamente.
+ *           '403':
+ *               description: Error al obtener cliente.
+ *           '409':
+ *               description: Cliente no encontrado.
  *       security:
  *           - bearerAuth: []
  */
