@@ -5,9 +5,7 @@ const { handleHttpError } = require('../utils/handleError.js')
 
 const createProject = async (req, res) => {
     try {
-        console.log("Hola")
         const body = matchedData(req)
-        console.log(body)
         const data = await projectModel.create(body);
         res.send(data)
     } catch (err) {
@@ -69,7 +67,6 @@ const getProjectsFromClient = async (req, res) => {
             return handleHttpError(res, 'ERROR_NO_ID_ESPECIFIED')
         }
         const cliente = await clientModel.findOne({ _id: id })
-        console.log("cliente: ", cliente)
         if (String(cliente.createdBy) !== String(userId)) {
             return handleHttpError(res, 'ERROR_NOT_YOUR_CLIENT')
         }

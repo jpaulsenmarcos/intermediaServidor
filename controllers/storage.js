@@ -11,7 +11,6 @@ const uploadImage = async (req, res) => {
         const ipsFile = pinataResponse.IpfsHash;
 
         const ipfsUrl = `https://${process.env.PINATA_GATEWAY_URL}/ipfs/${ipsFile}`
-        console.log('IPFS URL: ', ipfsUrl);
 
         const userId = req.user._id;
 

@@ -34,8 +34,6 @@ app.use('/api', router)
 
 const port = process.env.PORT || 3001
 
-console.log(process.env.JWT_SECRET)
-
 if (process.env.NODE_ENV !== 'test') {
     app.listen(port, () => {
         console.log(`Escuchando en el puerto ${port}`)

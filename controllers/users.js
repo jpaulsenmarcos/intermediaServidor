@@ -26,9 +26,7 @@ const getUserMine = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        console.log("Hola")
         const body = matchedData(req)
-        console.log(body)
         const data = await userModel.create(req.body);
         res.send(data)
     } catch (err) {
@@ -38,7 +36,6 @@ const createUser = async (req, res) => {
 
 const onBoardingUser = async (req, res) => {
     try {
-        console.log("OnBOARDING")
         const body = matchedData(req)
         const { mail, name, surnames, nif, autonomo } = body
 
@@ -66,7 +63,6 @@ const onBoardingUser = async (req, res) => {
 
 const onBoardingCompany = async (req, res) => {
     try {
-        console.log("OnBOARDINGCompany")
         const body = matchedData(req)
         const userId = req.user._id
         const { company } = body
@@ -102,11 +98,9 @@ const deleteUser = async (req, res) => {
         if (soft === "true") {
             user.deleted = true
             await user.save()
-            console.log('Usuario borrado SOFT')
             return res.send(true)
         } else if (soft === "false") {
             await userModel.findByIdAndDelete(userId)
-            console.log('Usuario borrado HARD')
             return res.send(true)
         } else {
             handleHttpError(res, 'INVALID_SOFT_PARAM')

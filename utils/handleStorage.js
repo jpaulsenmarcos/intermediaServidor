@@ -3,12 +3,10 @@ const memory = multer.memoryStorage()
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        console.log(file);
         const pathStorage = _dirname + "/../storage";
         callback(null, pathStorage)
     },
     filename: (req, file, callback) => {
-        console.log(file);
         const ext = file.originalname.split(".").pop()
         const filename = "file-" + Date.now() + "." + ext
         callback(null, filename)

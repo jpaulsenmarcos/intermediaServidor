@@ -10,9 +10,7 @@ const axios = require('axios')
 
 const createDelivery = async (req, res) => {
     try {
-        console.log("Hola")
         const body = matchedData(req)
-        console.log(body)
         const data = await deliveryModel.create(body);
         res.send(data)
     } catch (err) {
@@ -122,7 +120,6 @@ const signDeliverynote = async (req, res) => {
         const pinataResponse = await uploadToPinata(fileBuffer, filename);
         const ipsFile = pinataResponse.IpfsHash;
         const ipfsUrl = `https://${process.env.PINATA_GATEWAY_URL}/ipfs/${ipsFile}`
-        console.log('IPFS URL: ', ipfsUrl);
         const deliverynote = await deliveryModel.findByIdAndUpdate(
             id,
             {
@@ -179,7 +176,6 @@ const downloadSignedPdf = async (req, res) => {
                 const pinataResponse = await uploadToPinata(pdfBuffer, fileName)
                 const ipfsHash = pinataResponse.IpfsHash
                 const pinataUrl = `https://${process.env.PINATA_GATEWAY_URL}/ipfs/${ipfsHash}`
-                console.log('PDF en pinata: ', pinataUrl)
 
                 const pinataDownload = await axios.get(pinataUrl, { responseType: 'arraybuffer' })
                 const buffer = Buffer.from(pinataDownload.data)
@@ -241,9 +237,8 @@ const deleteDeliverynote = async (req, res) => {
         )
         if (hayFirma) {
             return handleHttpError(res, 'ERROR_IS_SIGNED')
-        } else {
-            const deliverynoteBorrado = await deliveryModel.findByIdAndDelete(id)
         }
+        await deliveryModel.findByIdAndDelete(id)
         res.send({ message: "eliminado!" })
         res.status(200)
     } catch (err) {

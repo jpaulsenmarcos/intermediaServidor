@@ -1,10 +1,9 @@
 jest.mock('../utils/handleUploadIPFS.js', () => ({
     uploadToPinata: jest.fn().mockResolvedValue({ IpfsHash: 'fakehash' })
 }));
-jest.mock('axios', () => ({
-    get: jest.fn().mockResolvedValue({ data: Buffer.from('PDFDATA') })
-}));
+jest.mock('axios');
 
+const axios = require('axios')
 const supertest = require('supertest')
 const app = require('../app.js')
 const mongoose = require('mongoose')
@@ -48,6 +47,8 @@ describe('deliverynote endpoints', () => {
                 }
             }).expect(200).expect('Content-Type', /application\/json/)
         clientId = clientResponse.body._id
+
+        await clientModel.findByIdAndUpdate(clientId, { createdBy: userId })
 
         const projectResponse = await api.post('/api/project').auth(token, { type: 'bearer' })
             .send({
@@ -112,5 +113,40 @@ describe('deliverynote endpoints', () => {
             .attach('image', Buffer.from('dummy'), 'firma.png').expect(200).expect('Content-Type', /json/)
         expect(body.deliverynote.firma).toBeDefined()
         expect(body.deliverynote.firma.url).toContain('https://')
+    });
+
+    /*it('should download the signed PDF', async () => {
+        const onePxPng = Buffer.from(
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=',
+            'base64'
+        )
+
+        axios.get.mockResolvedValueOnce({
+            data: onePxPng,
+            headers: { 'content-type': 'image/png' }
+        }).mockResolvedValueOnce({
+            data: Buffer.from('%PDF-1.4\n'),
+            headers: { 'content-type': 'application/pdf' }
+        })
+        const response = await api.patch(`/api/deliverynote/signedPdf/${deliveryId}`).auth(token, { type: 'bearer' })
+            .expect(200)
+        expect(response.headers['content-type']).toMatch(/pdf/)
+    });*/
+
+    it('should delete the deliveryNote', async () => {
+        await clientModel.findByIdAndUpdate(clientId, { createdBy: userId })
+        const { body: newDelivery } = await api.post('/api/deliverynote').auth(token, { type: 'bearer' })
+            .send({
+                clientId,
+                projectId,
+                format: 'material',
+                material: 'delete-test',
+                hours: 1,
+                description: 'to delete',
+                workdate: '2024-02-01'
+            }).expect(200)
+        const deleteResponse = await api.delete(`/api/deliverynote/delete/${newDelivery._id}`).auth(token, { type: 'bearer' })
+            .expect(200)
+        expect(deleteResponse.body.message).toBe('eliminado!')
     });
 })

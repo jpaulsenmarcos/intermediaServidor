@@ -28,7 +28,6 @@ const registerCtrl = async (req, res) => {
         token: await tokenSign(dataUser),
         user: dataUser
     }
-    console.log(data.token)
     res.send(data)
 }
 
